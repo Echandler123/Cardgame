@@ -10,30 +10,37 @@ public class card
         this.point = point;
     }
 
-    public int getPoint() {
+    public int getPoint()
+    {
         return point;
     }
 
-    public int getRank() {
+    public int getRank()
+    {
         return rank;
     }
 
-    public String getSuit() {
+    public String getSuit()
+    {
         return suit;
     }
 
-    public void setRank(int rank) {
+    public void setRank(int rank)
+    {
         this.rank = rank;
     }
 
-    public void setPoint(int point) {
-
+    public void setPoint(int point)
+    {
+        this.point = point;
     }
 
-    public void setSuit(String suit) {
+    public void setSuit(String suit)
+    {
         this.suit = suit;
     }
     public String toString()
+
     {
         return rank + "of" + suit;
     }
