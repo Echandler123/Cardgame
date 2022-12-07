@@ -1,9 +1,9 @@
-public class card
+public class Card
 {
     private int rank;
     private String suit;
     private int point;
-    public card(int rank, String suit, int point)
+    public Card(int rank, String suit, int point)
     {
         this.rank = rank;
         this.suit = suit;
