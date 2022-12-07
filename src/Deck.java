@@ -3,16 +3,15 @@ public class Deck
 {
     private int cardsleft;
     private ArrayList<Card> stack = new ArrayList<Card>();
-    public Deck(int[] rank, String[] suit,int[] point) {
+    public Deck(String[] rank, String[] suit,int[] point) {
         for (int i = 0; i < suit.length; i++) {
             for (int j = 0; j < rank.length; j++) {
-                for (int k = 0; k < point.length; k++) {
+                //for (int k = 0; k < point.length; k++) {
                     cardsleft++;
-                    Card cards = new Card(rank[i], suit[j], point[k]);
+                    Card cards = new Card(rank[i], suit[j], point[i]);
                 }
             }
         }
-    }
     public boolean isempty()
     {
         if(cardsleft == 0)
