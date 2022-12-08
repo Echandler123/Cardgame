@@ -30,6 +30,10 @@ public class Player
     {
         points += addition;
     }
+    public void addCard(Card one)
+    {
+        hand.add(one);
+    }
     public String toString()
     {
         return name + " has " + points + " points " + name + "'s" + "cards:" + hand;

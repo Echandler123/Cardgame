@@ -6,12 +6,12 @@ public class Deck
     public Deck(String[] rank, String[] suit,int[] point) {
         for (int i = 0; i < suit.length; i++) {
             for (int j = 0; j < rank.length; j++) {
-                //for (int k = 0; k < point.length; k++) {
                     cardsleft++;
-                    Card cards = new Card(rank[i], suit[j], point[i]);
-                }
+                    Card cards = new Card(rank[j], suit[i], point[j]);
+                    stack.add(cards);
             }
         }
+    }
     public boolean isempty()
     {
         if(cardsleft == 0)
@@ -28,11 +28,12 @@ public class Deck
     {
         if(cardsleft > 0)
         {
+            cardsleft--;
             return stack.remove(cardsleft);
         }
         return null;
     }
-    public void shuffle()
+    public void Shuffle()
     {
         for(int i = 0; i < cardsleft;i++)
         {
@@ -44,5 +45,6 @@ public class Deck
             stack.remove(i);
             stack.add(i,copy2);
         }
+        cardsleft = stack.size();
     }
 }
