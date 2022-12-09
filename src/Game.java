@@ -3,22 +3,23 @@ import java.util.ArrayList;
 public class Game
 {
     private String name;
-    private static String[] ranks = {"A", "2", "3", "4", "5", "7", "8", "9", "10", "J", "Q", "K"};
+    private static String[] ranks = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     private static String[] suits = { "Hearts", "Clubs", "Spades", "Diamonds"};
-    private static int[] values = {1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13};
+    private static int[] values = {1, 2, 3, 4, 5,6, 7, 8, 9, 10, 11, 12, 13};
+
+    String winner = "Tie";
+    Deck one;
+    Player E;
+    Player C;
     public Game(String name) {
         this.name = name;
-        String winner = "";
-        Deck one = new Deck(ranks, suits, values);
-        Player E = new Player(name);
-        Player C = new Player("Computer");
-        one.Shuffle();
+        winner = "Tie";
+        one = new Deck(ranks, suits, values);
+        E = new Player(name);
+        C = new Player("Computer");
     }
-    public String playGame() {
-        String winner = "";
-        Deck one = new Deck(ranks, suits, values);
-        Player E = new Player(name);
-        Player C = new Player("Computer");
+    public void playGame() {
+
         one.Shuffle();
         for (int i =0; i < 26; i++)
         {
@@ -39,20 +40,11 @@ public class Game
             if (yourhand.get(k).getPoint() < theirhand.get(k).getPoint() ) {
                 C.addPoints(1);
             }
-            if (yourhand.get(k).getPoint()  == theirhand.get(k).getPoint() ) {
-                int tier = 0;
-                while (yourhand.get(k) == theirhand.get(k)) {
-                    tier++;
-                    k++;
-                }
-                if (yourhand.get(k).getPoint()  > theirhand.get(k).getPoint() ) {
-                    E.addPoints(tier);
-                }
-                if (yourhand.get(k).getPoint()  < theirhand.get(k).getPoint() ) {
-                    C.addPoints(tier);
-                }
+            if(yourhand.get(k).getPoint()  == theirhand.get(k).getPoint() ) {
+                war(E,C,yourhand, theirhand,k);
             }
         }
+
         if(C.getPoints() < E.getPoints())
         {
             winner = name;
@@ -61,11 +53,31 @@ public class Game
         {
             winner = "Computer";
         }
-        return winner;
+        System.out.println("Winner:" + winner);
     }
-    public void tier()
+    public void war(Player E, Player C,ArrayList<Card> yourhand,ArrayList<Card> theirhand, int spot)
     {
-
+        int total = 0;
+        int total2 = 0;
+        for(int k = 0; k <=3; k++) {
+            total += yourhand.get(k).getPoint();
+            total2 +=  theirhand.get(k).getPoint();
+        }
+        if (total > total2 ) {
+            E.addPoints(total + total2);
+        }
+        if (total2 > total) {
+            C.addPoints(total + total2);
+        }
+    }
+    public void PrintInstructions()
+    {
+        System.out.println("This card game is war. In this game it will be you against the computer.The deck is " +
+                "divided evenly divide between you and the computer. In a game of war you and the computer will both" +
+                "draw a card from your deck and the person with the highest ranked card wins.If you win you get a point " +
+                "added to your score If you both draw a card with the same rank then it is war. In this version of war " +
+                "you will each draw three cards and whoever has the most points in total gets all 6 points. In this" +
+                " version of war when you run out of cards whoever has the most points by then wins.");
     }
 
 }

@@ -32,7 +32,15 @@ public class Player
     }
     public void addCard(Card one)
     {
+        hand.add(0,one);
+    }
+    public void addCards(Card one)
+    {
         hand.add(one);
+    }
+    public Card removeCard()
+    {
+        return hand.remove(hand.size() - 1);
     }
     public String toString()
     {
