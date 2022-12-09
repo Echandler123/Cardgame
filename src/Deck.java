@@ -3,11 +3,13 @@ public class Deck
 {
     private int cardsleft;
     private ArrayList<Card> stack = new ArrayList<Card>();
+    //this constructor takes in the 3 arrays of ranks suits and points to create a sorted deck of cards contained in an
+    //arraylist called stack
     public Deck(String[] rank, String[] suit,int[] point) {
-        for (int i = 0; i < suit.length; i++) {
+        for (String s : suit) {
             for (int j = 0; j < rank.length; j++) {
-                    Card cards = new Card(rank[j], suit[i], point[j]);
-                    stack.add(cards);
+                Card cards = new Card(rank[j], s, point[j]);
+                stack.add(cards);
             }
             cardsleft = stack.size();
         }
@@ -34,7 +36,7 @@ public class Deck
         cardsleft = cardsleft - 1;
         return stack.remove(cardsleft);
     }
-    //this method randomly shuffles all of the cards in the deck
+    //this method randomly shuffles all the cards in the deck
     public void Shuffle()
     {
         for(int i = 0; i < cardsleft;i++)

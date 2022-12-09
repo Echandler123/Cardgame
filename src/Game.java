@@ -20,7 +20,7 @@ public class Game
     }
     //this method
     public void playGame() {
-        PrintInstructions();
+        printInstructions();
         one.Shuffle();
         for (int i =0; i < 26; i++)
         {
@@ -33,7 +33,7 @@ public class Game
         ArrayList<Card> yourhand = E.getHand();
         ArrayList<Card> theirhand = C.getHand();
 
-        for (int k = 0; k < 21; k++) {
+        for (int k = 0; k < 26; k++) {
             if (yourhand.get(k).getPoint()  > theirhand.get(k).getPoint())
             {
                 E.addPoints(1);
@@ -45,16 +45,7 @@ public class Game
                 war(E,C,yourhand, theirhand,k);
             }
         }
-
-        if(C.getPoints() < E.getPoints())
-        {
-            winner = name;
-        }
-        if(C.getPoints() > E.getPoints())
-        {
-            winner = "Computer";
-        }
-        System.out.println("Winner:" + winner);
+        getWinner(E,C);
     }
     //this is the war method which takes in the players and their hands of cars and the index of where ot start in
     // their hands. This method adds takes 3 cards from each hand together to total points of each of the 3 cards. Once
@@ -82,14 +73,28 @@ public class Game
         }
     }
     //prints the instructions so the user knows how to play the game
-    public void PrintInstructions()
+    public void printInstructions()
     {
         System.out.println("This card game is war. In this game it will be you against the computer.The deck is " +
                 "divided evenly divide between you and the computer. In a game of war you and the computer will both" +
                 "draw a card from your deck and the person with the highest ranked card wins.If you win you get a point " +
                 "added to your score If you both draw a card with the same rank then it is war. In this version of war " +
                 "you will each draw three cards and whoever has the most points in total gets all 6 points. In this" +
-                " version of war when you run out of cards whoever has the most points by then wins.");
+                " version of war when you run out of cards whoever has the most points by then wins. If you want to " +
+                "play again you can type in Y if not type in N");
+    }
+    //this method prints out who won the game
+    public void getWinner(Player E, Player C)
+    {
+        if(C.getPoints() < E.getPoints())
+        {
+            winner = name;
+        }
+        if(C.getPoints() > E.getPoints())
+        {
+            winner = "Computer";
+        }
+        System.out.println("Winner:" + winner);
     }
 
 }
