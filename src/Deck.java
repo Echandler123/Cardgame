@@ -12,18 +12,19 @@ public class Deck
             cardsleft = stack.size();
         }
     }
-    public boolean isempty()
-    {
-        if(cardsleft <= 0)
-        {
+    //this method returns if the deck does or does not have anymore more card lefts
+    public boolean isempty() {
+        if (cardsleft <= 0) {
             return true;
         }
         return false;
     }
+    //this method returns the amount cards left in the deck
     public int getCardsLeft()
     {
         return cardsleft;
     }
+    //this method deals 1 card and removes that card from the deck
     public Card deal()
     {
         if(cardsleft <= 0)
@@ -33,6 +34,7 @@ public class Deck
         cardsleft = cardsleft - 1;
         return stack.remove(cardsleft);
     }
+    //this method randomly shuffles all of the cards in the deck
     public void Shuffle()
     {
         for(int i = 0; i < cardsleft;i++)

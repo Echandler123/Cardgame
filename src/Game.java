@@ -11,14 +11,16 @@ public class Game
     Deck one;
     Player E;
     Player C;
+    //constructor for the game that creates a new deck for the game and create 2 players the computer and the user
     public Game(String name) {
         this.name = name;
         one = new Deck(ranks, suits, values);
         E = new Player(name);
         C = new Player("Computer");
     }
+    //this method
     public void playGame() {
-
+        PrintInstructions();
         one.Shuffle();
         for (int i =0; i < 26; i++)
         {
@@ -32,14 +34,14 @@ public class Game
         ArrayList<Card> theirhand = C.getHand();
 
         for (int k = 0; k < 21; k++) {
-            if (yourhand.get(k).getPoint()  > theirhand.get(k).getPoint() )
+            if (yourhand.get(k).getPoint()  > theirhand.get(k).getPoint())
             {
                 E.addPoints(1);
             }
-            if (yourhand.get(k).getPoint() < theirhand.get(k).getPoint() ) {
+            if (yourhand.get(k).getPoint() < theirhand.get(k).getPoint()) {
                 C.addPoints(1);
             }
-            if(yourhand.get(k).getPoint()  == theirhand.get(k).getPoint() ) {
+            if(yourhand.get(k).getPoint()  == theirhand.get(k).getPoint()) {
                 war(E,C,yourhand, theirhand,k);
             }
         }
@@ -54,8 +56,13 @@ public class Game
         }
         System.out.println("Winner:" + winner);
     }
+    //this is the war method which takes in the players and their hands of cars and the index of where ot start in
+    // their hands. This method adds takes 3 cards from each hand together to total points of each of the 3 cards. Once
+    //if finds the total it compares the 2 totals to see who will win the war and whoever wins will get 6 points from
+    //the three they used and the three from the opponent/computer
     public void war(Player E, Player C,ArrayList<Card> yourhand,ArrayList<Card> theirhand, int spot)
     {
+        System.out.println("War!");
         int total = 0;
         int total2 = 0;
         for(int k = 0; k <=3; k++) {
@@ -64,11 +71,17 @@ public class Game
         }
         if (total > total2 ) {
             E.addPoints(6);
+            System.out.println(E.getName() + " wins the war!");
         }
         if (total2 > total) {
             C.addPoints(6);
+            System.out.println(C.getName() + " wins the war!");
+        }
+        if (total2 == total) {
+            System.out.println("The war was a tie!");
         }
     }
+    //prints the instructions so the user knows how to play the game
     public void PrintInstructions()
     {
         System.out.println("This card game is war. In this game it will be you against the computer.The deck is " +
