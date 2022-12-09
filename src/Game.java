@@ -45,7 +45,7 @@ public class Game
                 war(E,C,yourhand, theirhand,k);
             }
         }
-        getWinner(E,C);
+        printWinner(E,C);
     }
     //this is the war method which takes in the players and their hands of cars and the index of where ot start in
     // their hands. This method adds takes 3 cards from each hand together to total points of each of the 3 cards. Once
@@ -84,7 +84,7 @@ public class Game
                 "play again you can type in Y if not type in N");
     }
     //this method prints out who won the game
-    public void getWinner(Player E, Player C)
+    public void printWinner(Player E, Player C)
     {
         if(C.getPoints() < E.getPoints())
         {
