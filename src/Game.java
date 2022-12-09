@@ -13,7 +13,6 @@ public class Game
     Player C;
     public Game(String name) {
         this.name = name;
-        winner = "Tie";
         one = new Deck(ranks, suits, values);
         E = new Player(name);
         C = new Player("Computer");
