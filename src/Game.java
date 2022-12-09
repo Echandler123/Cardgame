@@ -63,10 +63,10 @@ public class Game
             total2 +=  theirhand.get(k).getPoint();
         }
         if (total > total2 ) {
-            E.addPoints(total + total2);
+            E.addPoints(6);
         }
         if (total2 > total) {
-            C.addPoints(total + total2);
+            C.addPoints(6);
         }
     }
     public void PrintInstructions()
