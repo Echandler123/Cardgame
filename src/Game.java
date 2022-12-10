@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.Scanner;
 public class Game
 {
     private String name;
@@ -11,14 +11,18 @@ public class Game
     Deck one;
     Player E;
     Player C;
-    //constructor for the game that creates a new deck for the game and create 2 players the computer and the user
-    public Game(String name) {
-        this.name = name;
+    //constructor for the game that creates a new deck for the game calls,calls the setName method, and creates 2
+    // players the computer and the user
+    public Game() {
         one = new Deck(ranks, suits, values);
+        setName();
         E = new Player(name);
         C = new Player("Computer");
     }
-    //this method
+    //this method first calls the print instructions method then shuffles the deck. Then it deals half the deck to the
+    //user and computer. then it will compare each card of both hands to each to see which has a higher point value
+    //whoever has the card with the higher point value has their player points increased by 1 and if the points are
+    //equal the method calls the war method. Then it calls the print winner method at the end.
     public void playGame() {
         printInstructions();
         one.Shuffle();
@@ -49,7 +53,7 @@ public class Game
     }
     //this is the war method which takes in the players and their hands of cars and the index of where ot start in
     // their hands. This method adds takes 3 cards from each hand together to total points of each of the 3 cards. Once
-    //if finds the total it compares the 2 totals to see who will win the war and whoever wins will get 6 points from
+    //it finds the total it compares the 2 totals to see who will win the war and whoever wins will get 6 points from
     //the three they used and the three from the opponent/computer
     public void war(Player E, Player C,ArrayList<Card> yourhand,ArrayList<Card> theirhand, int spot)
     {
@@ -95,6 +99,13 @@ public class Game
             winner = "Computer";
         }
         System.out.println("Winner:" + winner);
+    }
+    //this method asks the user ot input a name and returns that name;
+    public void setName()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your name:");
+        this.name = sc.nextLine();
     }
 
 }
